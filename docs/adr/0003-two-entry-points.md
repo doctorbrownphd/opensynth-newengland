@@ -1,0 +1,3 @@
+# Two public entry points: generate_day and generate
+
+The package exposes `generate_day()` for interactive single-day exploration and `generate()` for batch dataset creation. We considered a single `generate()` that returns full-year profiles regardless, but the interactive UI needs a fast single-day call with 96 data points — not a full-year computation. We also considered a third `generate_year()` entry point, but it is just a loop over `generate_day()` and does not justify public API surface. Both functions return full component breakdown (net, gross, base, heat, ev, cool, solar, behav) by default because the decomposition is the product's value proposition.

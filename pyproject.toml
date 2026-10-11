@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opensynth-newengland"
+version = "0.1.0"
+description = "Synthetic AMI dataset generator for New England residential load profiles"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{ name = "Jeremy Haynes" }]
+keywords = ["energy", "synthetic-data", "AMI", "load-profiles", "new-england"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.104",
+    "uvicorn[standard]>=0.24",
+]
+cvae = [
+    "torch>=2.0",
+]
+dev = [
+    "pytest>=7.4",
+    "httpx>=0.25",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+opensynth-ne = "opensynth_ne.api:main"
+
+[project.urls]
+Repository = "https://github.com/doctorbrownphd/opensynth-newengland"
+Documentation = "https://github.com/doctorbrownphd/opensynth-newengland#readme"
+
+[tool.hatch.build.targets.sdist]
+exclude = ["src/opensynth_ne/weights/*.pt", "training/", "dataset/", "web/node_modules/"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opensynth_ne"]
+exclude = ["src/opensynth_ne/weights/*.pt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100

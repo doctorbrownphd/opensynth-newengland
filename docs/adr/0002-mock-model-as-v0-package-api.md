@@ -1,0 +1,3 @@
+# Mock model ships as the v0 package implementation
+
+The deterministic mock load model (ported from the UI prototype's `data.js`) lives inside the package at `src/opensynth_ne/model.py` behind the same public API the CVAE will eventually use: `generate_day()` and `generate()`. We considered keeping the mock separate from the real package (`web/mock_model.py`) to keep the source clean, but that would mean two implementations of the same API diverging over time. The mock is not throwaway — it serves as the fallback when CVAE weights are not installed, a test fixture for the API and web app, and a credible v0 for the static dataset while the real model is being trained.

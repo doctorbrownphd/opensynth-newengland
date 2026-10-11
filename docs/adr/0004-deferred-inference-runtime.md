@@ -1,0 +1,3 @@
+# Inference runtime decision deferred until CVAE is trained
+
+The v0 package depends only on numpy, pandas, and optionally FastAPI. The CVAE inference runtime (PyTorch vs ONNX Runtime) and the Hugging Face Hub integration are deferred until the model is actually trained. When they land, they will be optional extras (`pip install opensynth-newengland[model]` and `pip install opensynth-newengland[api]`). We considered committing to PyTorch early since it is the training framework, but the CVAE architecture is not finalized and ONNX export may be viable for a lighter install. The base package works with the mock model alone, so no user is blocked by this deferral.

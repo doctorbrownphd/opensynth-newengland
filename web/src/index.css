@@ -1,0 +1,138 @@
+/* ============================================================
+   OpenSynth New England — Design Foundations
+   Type: IBM Plex Sans (UI) · IBM Plex Mono (data/code)
+   Theme: Spruce (teal) — light/dark
+   ============================================================ */
+
+/* ---------- Neutrals + semantic tokens : LIGHT (default) ---------- */
+:root {
+  --paper:       #FAF9F5;
+  --surface:     #FFFFFF;
+  --surface-2:   #F3F2EC;
+  --surface-3:   #ECEAE1;
+  --line:        #E4E2D8;
+  --line-strong: #D3D0C4;
+  --ink:         #191B18;
+  --ink-2:       #54574E;
+  --ink-3:       #898C81;
+  --ink-inv:     #FAF9F5;
+
+  /* Categorical data palette */
+  --d-load:    #1F7A82;
+  --d-heat:    #C8542A;
+  --d-ev:      #5A5CE0;
+  --d-solar:   #E0A40F;
+  --d-base:    #9AA29A;
+  --d-temp:    #6E93C8;
+
+  --ok:    #2E8B57;
+  --warn:  #C98A12;
+  --bad:   #C0452B;
+
+  --ok-bg:   #E9F3ED;
+  --warn-bg: #F6EEDB;
+  --bad-bg:  #F6E6E1;
+
+  /* Spruce accent */
+  --accent:      #117C72;
+  --accent-2:    #16A091;
+  --accent-weak: #E3F0EE;
+  --accent-ink:  #FFFFFF;
+
+  --radius:     8px;
+  --radius-sm:  5px;
+  --radius-lg:  14px;
+
+  --shadow-sm: 0 1px 2px rgba(20,22,18,.05), 0 1px 1px rgba(20,22,18,.04);
+  --shadow-md: 0 4px 14px rgba(20,22,18,.07), 0 1px 3px rgba(20,22,18,.05);
+  --shadow-lg: 0 18px 50px rgba(20,22,18,.14), 0 4px 12px rgba(20,22,18,.08);
+
+  --font-ui:   'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  color-scheme: light;
+}
+
+/* ---------- DARK ---------- */
+[data-theme="dark"] {
+  --paper:       #0D0F10;
+  --surface:     #16191A;
+  --surface-2:   #1C2022;
+  --surface-3:   #242A2C;
+  --line:        #272D2F;
+  --line-strong: #38403F;
+  --ink:         #ECEEE9;
+  --ink-2:       #A4A99F;
+  --ink-3:       #6D736C;
+  --ink-inv:     #0D0F10;
+
+  --d-load:    #34A6AE;
+  --d-heat:    #E47242;
+  --d-ev:      #8A8CF0;
+  --d-solar:   #EEBA38;
+  --d-base:    #7E867D;
+  --d-temp:    #8FB0DE;
+
+  --ok:    #54B981;
+  --warn:  #E0B14A;
+  --bad:   #E0735A;
+  --ok-bg:   #16271E;
+  --warn-bg: #2A2412;
+  --bad-bg:  #2A1A15;
+
+  --accent:      #2BBBAC;
+  --accent-2:    #3FD1C0;
+  --accent-weak: #11302D;
+  --accent-ink:  #06100E;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.5);
+  --shadow-lg: 0 20px 56px rgba(0,0,0,.6);
+
+  color-scheme: dark;
+}
+
+/* ---------- Reset / base ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-ui);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 14px;
+  line-height: 1.5;
+}
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+.tnum { font-feature-settings: "tnum" 1, "zero" 1; font-variant-numeric: tabular-nums slashed-zero; }
+.mono { font-family: var(--font-mono); }
+
+h1,h2,h3,h4 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
+a { color: inherit; text-decoration: none; }
+button, select, input { font-family: inherit; }
+
+/* thin scrollbars */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 99px; border: 3px solid var(--paper); }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* focus ring */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* entrance animation */
+@keyframes os-fade { from { transform: translateY(7px); } to { transform: none; } }
+.os-fade { animation: os-fade .34s cubic-bezier(.22,.61,.36,1); }
+@media (prefers-reduced-motion: reduce) { .os-fade { animation: none; } }
+
+/* responsive: stack generator layout on narrow screens */
+@media (max-width: 860px) {
+  .gen-layout { grid-template-columns: 1fr !important; }
+  .ds-layout { grid-template-columns: 1fr !important; }
+  .val-grid { grid-template-columns: 1fr 1fr !important; }
+  .val-layout { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 600px) {
+  .val-grid { grid-template-columns: 1fr !important; }
+}

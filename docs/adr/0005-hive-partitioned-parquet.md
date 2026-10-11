@@ -1,0 +1,3 @@
+# Static dataset uses Hive-partitioned Parquet
+
+The v1.0 static dataset (10,000 meters, 350M rows) ships as Hive-partitioned Parquet (`archetype=colonial/fuel=oil/der=none/data.parquet`). We considered a single Parquet file, per-archetype flat files, and per-meter files. A single 2GB file is unwieldy for researchers who only need a subset. Per-meter files (10,000) are too granular. Hive partitioning is the standard for analytical datasets, reads natively in PyArrow, DuckDB, and Spark, and lets researchers query a slice without loading everything. CSV ships as a single file since CSV tooling generally expects that. Green Button XML is deferred to v2.

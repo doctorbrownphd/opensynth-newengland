@@ -1,0 +1,43 @@
+{
+  "source": "NREL ResStock End-Use Load Profiles 2024",
+  "states": [
+    "NH",
+    "MA",
+    "CT",
+    "RI",
+    "VT",
+    "ME"
+  ],
+  "n_buildings": 1200,
+  "n_day_profiles": 438000,
+  "n_channels": 6,
+  "n_timesteps": 96,
+  "component_names": [
+    "base",
+    "behav",
+    "heat",
+    "cool",
+    "ev",
+    "solar"
+  ],
+  "profile_means": [
+    0.4468464255332947,
+    0.18199166655540466,
+    0.1453588455915451,
+    0.0933162048459053,
+    0.0,
+    -0.011528540402650833
+  ],
+  "profile_stds": [
+    0.3324768543243408,
+    0.7502561211585999,
+    0.7356999516487122,
+    0.2676987051963806,
+    0.0,
+    0.2035607546567917
+  ],
+  "temp_f_mean": 48.56438446044922,
+  "temp_f_std": 18.02477264404297,
+  "daily_kwh_mean": 20.54572105407715,
+  "annual_kwh_est": 7499.188184738159
+}

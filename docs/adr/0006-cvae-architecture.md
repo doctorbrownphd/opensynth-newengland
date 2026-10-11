@@ -1,0 +1,3 @@
+# 6-channel CVAE with deterministic battery dispatch
+
+The CVAE generates 6 load component channels simultaneously (base, behav, heat, cool, ev, solar) as a 6×96 tensor, while battery charge/discharge is applied deterministically post-hoc using the same simple dispatch rule as the mock model. We considered having the CVAE learn all 7 components including battery, but battery behavior is a step function (charge 10-14h, discharge 17.5-21h) that is hard for a smooth decoder to reproduce and trivial to compute deterministically. Keeping battery out of the learned model avoids a failure mode without losing any expressiveness — the CVAE focuses on learning the stochastic components while battery stays exact.

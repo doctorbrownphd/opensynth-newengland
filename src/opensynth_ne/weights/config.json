@@ -1,0 +1,14 @@
+{
+  "latent_dim": 32,
+  "n_channels": 6,
+  "n_timesteps": 96,
+  "cond_dim": 29,
+  "component_names": [
+    "base",
+    "behav",
+    "heat",
+    "cool",
+    "ev",
+    "solar"
+  ]
+}
